@@ -3,7 +3,7 @@
 
 package gtools
 
-// /* deebnf.c */
+// /* gdeebnf.c */
 //
 // /* written by Douglas Jones, July 2013 */
 //
@@ -28,23 +28,23 @@ package gtools
 //
 // #include "grammar.h"
 // #include "readg.h"
-// #include "deebnf.h"
-//
+// #include "gdeebnf.h"
+
 // /*
 //  * Global
 //  */
-//
+
 // static PSYMBOL lparen;  /* ( */
 // static PSYMBOL rparen;  /* ) */
 // static PSYMBOL lsquare; /* [ */
 // static PSYMBOL rsquare; /* ] */
 // static PSYMBOL lcurly;  /* { */
 // static PSYMBOL rcurly;  /* } */
-//
+
 // /*
 //  * Worker routines
 //  */
-//
+
 // static PSYMBOL getdelsym( char * str ) {
 //         /* get symbol with name str and delete it from the master symbol list;
 //            str must begin with the length of the string, in characters;
@@ -81,7 +81,7 @@ package gtools
 // 	/* done */
 // 	return s;
 // }
-//
+
 // static PSYMBOL inventsymbol( PSYMBOL s, int * nsc ) {
 // 	/* invent and return a new symbol; as initialized, it is a terminal
 // 	   symbol a unique name derived from the name of s and *nsc.
@@ -147,7 +147,7 @@ package gtools
 // 	s = definesym( newname );
 // 	return s;
 // }
-//
+
 // static PSYMBOL extractuntil( PSYMBOL s, PPRODUCTION p, PELEMENT e,
 // 			     PSYMBOL rsym, int * nsc ) {
 // 	/* delete from e->next of production rule p and successors
@@ -265,7 +265,7 @@ package gtools
 // 	}
 // 	return ns;
 // }
-//
+
 // static void addemptyrule( PSYMBOL s ) {
 // 	/* add an empty production to nonterminal s */
 // 	PPRODUCTION p; /* a new production | <empty> */
@@ -288,7 +288,7 @@ package gtools
 // 	p->state = UNTOUCHED;
 // 	s->data = p;
 // }
-//
+
 // static void makeiterative( PSYMBOL s ) { /* make nonterminal s iterate */
 // 	PPRODUCTION p;  /* a production under s */
 // 	PELEMENT e;	/* an element of p */
@@ -318,7 +318,7 @@ package gtools
 // 	/* add an empty production to s to terminate iteration */
 // 	addemptyrule( s );
 // }
-//
+
 // static void process( PSYMBOL s ) { /* process one symbol */
 // 	PPRODUCTION p;    /* this production rule */
 // 	PPRODUCTION * pp; /* the pointer to p so we can delete rules */
@@ -400,12 +400,12 @@ package gtools
 // 	}
 // 	s->state = TOUCHED;
 // }
-//
+
 // /*
 //  * The interface
 //  */
-//
-// void deebnf() { /* remove Wirth-style EBNF features */
+
+// void gdeebnf() { /* remove Wirth-style EBNF features */
 // 	PSYMBOL s;
 //
 // 	/* initializations */

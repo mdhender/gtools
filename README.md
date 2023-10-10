@@ -383,7 +383,7 @@ Also note that `gstartfollow` expects its input to be in simple *BNF*.
 If you want to analyze an *EBNF* grammar, you must first convert it, for example:
 
 ```bash
-./deebnf < ebnf.gr | ./gdeempty | ./gstartfollow
+./gdeebnf < ebnf.gr | ./gdeempty | ./gstartfollow
 ```
 
 In the result, the start set and follow set for each non-terminal that was in the original *EBNF* grammar will be correct.

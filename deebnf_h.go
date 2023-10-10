@@ -3,7 +3,7 @@
 
 package gtools
 
-// /* deebnf.c */
+// /* gdeebnf.c */
 //
 // /* written by Douglas Jones, July 2013 */
 //
@@ -24,4 +24,4 @@ package gtools
 //  * The interface
 //  */
 //
-// void deebnf(); /* remove Wirth-style EBNF features */
+// void gdeebnf(); /* remove Wirth-style EBNF features */
