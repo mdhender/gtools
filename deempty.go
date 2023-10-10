@@ -43,7 +43,10 @@ const NONEMPTY = TOUCHED
 
 // Global
 var (
-	change bool // static // record that a change was made to the grammar
+	// static variables for deempty file
+	_deempty struct {
+		change bool // record that a change was made to the grammar
+	}
 )
 
 // Support
@@ -92,7 +95,7 @@ func checkempty(s PSYMBOL) {
 
 		if p.state != pstate { /* record new state of rule p */
 			p.state = pstate
-			change = true
+			_deempty.change = true
 		}
 
 		/* record impact of above on what we know about symbol s */
@@ -125,7 +128,7 @@ func checkempty(s PSYMBOL) {
 
 	if s.state != sstate { /* record new state of symbol s */
 		s.state = sstate
-		change = true
+		_deempty.change = true
 	}
 }
 
@@ -260,8 +263,8 @@ func deempty() {
 	emptypt.state = ISEMPTY
 
 	// do {...} while (change)
-	for firstTime := true; firstTime || change; firstTime = false { /* keep trying until no change is made to the grammar */
-		change = false
+	for firstTime := true; firstTime || _deempty.change; firstTime = false { /* keep trying until no change is made to the grammar */
+		_deempty.change = false
 
 		for s = symlist; s != nil; s = s.next {
 			if NONTERMINAL(s) {
